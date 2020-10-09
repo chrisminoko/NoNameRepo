@@ -19,7 +19,7 @@ namespace TESTAPI.Repository
         }
         public async Task<int> AddAsync(Employee entity)
         {
-            var sql = "INSERT INTO Employees (Name,Department,Age,City,Country ) Values  (Name=@Name,Department=@Department,Age=@Age,City=@City,Country=@Country)";
+            var sql = "INSERT INTO Employees (Name,Department,Age,City,Country ) Values  (@Name,@Department,@Age,@City,@Country)";
             using var connection = new SqlConnection(configuration.GetConnectionString("DefaultConnection"));
             connection.Open();
             var result = await connection.ExecuteAsync(sql, entity);
